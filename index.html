@@ -294,7 +294,328 @@
             </header>
 
             <main class="flex-1 overflow-y-auto p-6 lg:p-8">
-                <!-- TELAS -->
+                <section data-tela="home-cursos-em-destaque" class="hidden">
+    <div id="home-toast-container" class="fixed top-4 right-4 z-[70] flex flex-col gap-2"></div>
+
+    <!-- Hero Banner -->
+    <div class="relative w-full min-h-[520px] flex items-center overflow-hidden">
+        <div class="absolute inset-0 bg-marca-900"></div>
+        <div class="absolute inset-0 opacity-15" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><circle cx=%2230%22 cy=%2230%22 r=%221%22 fill=%22white%22/></svg>');background-size:60px 60px;"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-marca-900/95 via-marca-900/70 to-marca-900/40"></div>
+        <div class="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-8 py-16 w-full">
+            <div class="max-w-2xl">
+                <span class="inline-block bg-white/10 backdrop-blur-sm text-white/90 text-xs font-semibold px-4 py-1.5 rounded-full mb-5 tracking-wide uppercase">Ensino a Distância</span>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-[3.4rem] font-extrabold text-white leading-[1.15] mb-5">Transforme sua carreira com nossos cursos</h1>
+                <p class="text-white/75 text-lg mb-8 leading-relaxed max-w-xl">Mais de 50 mil alunos certificados. Cursos reconhecidos pelo MEC com a melhor relação custo-benefício do Brasil.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="mostrarTela('catalogo-de-cursos')" class="active:scale-95 transition-all duration-200 bg-white text-marca-900 font-bold px-7 py-3.5 rounded-xl hover:shadow-lg hover:shadow-white/20 text-[15px]">Ver Cursos</button>
+                    <button onclick="mostrarTela('area-do-aluno')" class="active:scale-95 transition-all duration-200 bg-marca-800/60 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-xl hover:bg-marca-800 text-[15px]">Área do Aluno</button>
+                </div>
+                <div class="flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-white/15">
+                    <div class="flex -space-x-3">
+                        <div class="w-9 h-9 rounded-full bg-marca-700 border-2 border-marca-900 flex items-center justify-center text-white text-xs font-bold">MC</div>
+                        <div class="w-9 h-9 rounded-full bg-destaque border-2 border-marca-900 flex items-center justify-center text-white text-xs font-bold">AS</div>
+                        <div class="w-9 h-9 rounded-full bg-marca-600 border-2 border-marca-900 flex items-center justify-center text-white text-xs font-bold">RP</div>
+                        <div class="w-9 h-9 rounded-full bg-marca-500 border-2 border-marca-900 flex items-center justify-center text-white text-xs font-bold">+</div>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1 mb-0.5">
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                            <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        </div>
+                        <p class="text-white/65 text-sm">4.9/5 baseado em 2.847 avaliações</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden lg:block absolute right-0 top-0 h-full w-[45%]">
+            <div class="absolute inset-0 bg-gradient-to-r from-marca-900 via-marca-900/60 to-transparent"></div>
+            <svg class="absolute right-0 top-1/2 -translate-y-1/2 opacity-[0.07] w-[600px] h-[600px] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"/><path d="M12 14v7"/></svg>
+        </div>
+    </div>
+
+    <!-- Cursos em Destaque -->
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-8 -mt-16 relative z-20 mb-16">
+        <div class="bg-white rounded-2xl shadow-xl shadow-marca-900/8 p-6 lg:p-8 border border-slate-100">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+                <div>
+                    <h2 class="font-display text-2xl font-bold text-slate-900 mb-1">Cursos em Destaque</h2>
+                    <p class="text-slate-500 text-sm">Os mais procurados pelos nossos alunos este mês</p>
+                </div>
+                <button onclick="mostrarTela('catalogo-de-cursos')" class="mt-3 sm:mt-0 text-destaque font-semibold text-sm hover:underline flex items-center gap-1 transition-colors">Ver todos os cursos <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <div id="home-cursos-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-marca-700 to-marca-900 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z"/></svg>
+                        <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">Destaque</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-destaque/10 text-destaque text-xs font-semibold px-2.5 py-1 rounded-md">Direito</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Direito Constitucional Completo</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Curso completo preparatório para concursos com mais de 200h de conteúdo em vídeo.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★★</div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.9</span>
+                            <span class="text-slate-400 text-sm">(328)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 997</span><span class="font-bold text-destaque text-xl ml-2">R$ 497</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 41,42</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-emerald-600 to-emerald-800 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+                        <span class="absolute top-3 left-3 bg-amber-400 text-amber-900 text-[11px] font-bold px-2.5 py-1 rounded-lg">Mais Vendido</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-emerald-50 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-md">Saúde</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Enfermagem em Emergências</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Especialização em atendimento de urgência e emergência pré-hospitalar.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★★</div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.8</span>
+                            <span class="text-slate-400 text-sm">(512)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 1.200</span><span class="font-bold text-destaque text-xl ml-2">R$ 599</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 49,92</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-violet-600 to-violet-800 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg>
+                        <span class="absolute top-3 left-3 bg-white/15 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">Novo</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-violet-50 text-violet-700 text-xs font-semibold px-2.5 py-1 rounded-md">Educação</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Pedagogia e Gestão Escolar</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Formação pedagógica com ênfase em gestão educacional e novas metodologias.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★<span class="text-slate-300">★</span></div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.6</span>
+                            <span class="text-slate-400 text-sm">(189)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 850</span><span class="font-bold text-destaque text-xl ml-2">R$ 447</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 37,25</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-sky-500 to-marca-800 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-sky-50 text-sky-700 text-xs font-semibold px-2.5 py-1 rounded-md">Tecnologia</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Desenvolvimento Web Full Stack</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Aprenda HTML, CSS, JS, React, Node.js e banco de dados do zero ao profissional.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★★</div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.9</span>
+                            <span class="text-slate-400 text-sm">(741)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 1.500</span><span class="font-bold text-destaque text-xl ml-2">R$ 747</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 62,25</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-rose-600 to-rose-800 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-rose-50 text-rose-700 text-xs font-semibold px-2.5 py-1 rounded-md">Saúde</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Psicologia Clínica e Terapêutica</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Abordagens terapêuticas contemporâneas: TCC, psicanalise e análise do comportamento.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★<span class="text-slate-300">★</span></div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.7</span>
+                            <span class="text-slate-400 text-sm">(295)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 1.100</span><span class="font-bold text-destaque text-xl ml-2">R$ 647</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 53,92</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-amber-600 to-orange-700 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                        <span class="absolute top-3 left-3 bg-amber-400 text-amber-900 text-[11px] font-bold px-2.5 py-1 rounded-lg">Promoção</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-amber-50 text-amber-700 text-xs font-semibold px-2.5 py-1 rounded-md">Negócios</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Gestão Financeira Empresarial</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Análise financeira, fluxo de caixa, investimentos e planejamento orçamentário.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★★</div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.8</span>
+                            <span class="text-slate-400 text-sm">(423)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 780</span><span class="font-bold text-destaque text-xl ml-2">R$ 347</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 28,92</span>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="mostrarTela('detalhes-do-curso')" class="group cursor-pointer card border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg hover:shadow-destaque/8 transition-all duration-300 hover:-translate-y-1">
+                    <div class="h-44 bg-gradient-to-br from-teal-600 to-teal-800 relative flex items-center justify-center">
+                        <svg class="w-16 h-16 text-white/20 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.3-4.216.43-6.378.43a44.09 44.09 0 01-6.378-.43c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.25 2.25 0 10-4.5 0m-16.5 0V17.25m0-2.25V5.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v3.75m0 0h9.75M12 12.75h.008v.008H12v-.008z"/></svg>
+                    </div>
+                    <div class="p-5">
+                        <span class="badge bg-teal-50 text-teal-700 text-xs font-semibold px-2.5 py-1 rounded-md">Tecnologia</span>
+                        <h3 class="font-display font-bold text-slate-900 mt-2.5 mb-1 group-hover:text-destaque transition-colors">Banco de Dados SQL e NoSQL</h3>
+                        <p class="text-slate-500 text-sm mb-3 line-clamp-2">Modelagem, administração e otimização de bancos de dados relacionais e não-relacionais.</p>
+                        <div class="flex items-center gap-1 mb-3">
+                            <div class="flex">★★★★<span class="text-slate-300">★</span></div>
+                            <span class="text-slate-600 text-sm font-medium ml-1">4.7</span>
+                            <span class="text-slate-400 text-sm">(156)</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                            <div><span class="text-slate-400 line-through text-sm">R$ 680</span><span class="font-bold text-destaque text-xl ml-2">R$ 379</span></div>
+                            <span class="text-slate-400 text-xs">12x R$ 31,58</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categorias -->
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-8 mb-16">
+        <h2 class="font-display text-2xl font-bold text-slate-900 mb-1">Explore por Área</h2>
+        <p class="text-slate-500 text-sm mb-6">Encontre o curso ideal para sua área de interesse</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <button onclick="home_cursos_em_destaque_filtrarCategoria('Direito')" class="group flex flex-col items-center p-6 bg-white rounded-xl border border-slate-100 hover:border-destaque/30 hover:shadow-md hover:shadow-destaque/6 transition-all duration-300 hover:-translate-y-0.5">
+                <div class="w-14 h-14 rounded-xl bg-marca-50 flex items-center justify-center mb-3 group-hover:bg-destaque/10 transition-colors"><svg class="w-7 h-7 text-destaque" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v17.25m0 0c-1.472 0-2.882.265-4.185.75M12 20.25c1.472 0 2.882.265 4.185.75M18.75 4.97A48.416 48.416 0 0012 4.5c-2.291 0-4.545.16-6.75.47m13.5 0c1.01.143 1.994.337 2.95.525M4.5 4.97c.956.183 1.94.326 2.95.525"/></svg></div>
+                <span class="font-semibold text-slate-900 text-sm">Direito</span>
+                <span class="text-slate-400 text-xs mt-0.5">12 cursos</span>
+            </button>
+            <button onclick="home_cursos_em_destaque_filtrarCategoria('Saúde')" class="group flex flex-col items-center p-6 bg-white rounded-xl border border-slate-100 hover:border-destaque/30 hover:shadow-md hover:shadow-destaque/6 transition-all duration-300 hover:-translate-y-0.5">
+                <div class="w-14 h-14 rounded-xl bg-emerald-50 flex items-center justify-center mb-3 group-hover:bg-emerald-100 transition-colors"><svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
+                <span class="font-semibold text-slate-900 text-sm">Saúde</span>
+                <span class="text-slate-400 text-xs mt-0.5">8 cursos</span>
+            </button>
+            <button onclick="home_cursos_em_destaque_filtrarCategoria('Educação')" class="group flex flex-col items-center p-6 bg-white rounded-xl border border-slate-100 hover:border-destaque/30 hover:shadow-md hover:shadow-destaque/6 transition-all duration-300 hover:-translate-y-0.5">
+                <div class="w-14 h-14 rounded-xl bg-violet-50 flex items-center justify-center mb-3 group-hover:bg-violet-100 transition-colors"><svg class="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg></div>
+                <span class="font-semibold text-slate-900 text-sm">Educação</span>
+                <span class="text-slate-400 text-xs mt-0.5">10 cursos</span>
+            </button>
+            <button onclick="home_cursos_em_destaque_filtrarCategoria('Tecnologia')" class="group flex flex-col items-center p-6 bg-white rounded-xl border border-slate-100 hover:border-destaque/30 hover:shadow-md hover:shadow-destaque/6 transition-all duration-300 hover:-translate-y-0.5">
+                <div class="w-14 h-14 rounded-xl bg-sky-50 flex items-center justify-center mb-3 group-hover:bg-sky-100 transition-colors"><svg class="w-7 h-7 text-sky-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg></div>
+                <span class="font-semibold text-slate-900 text-sm">Tecnologia</span>
+                <span class="text-slate-400 text-xs mt-0.5">15 cursos</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="bg-marca-900">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-14">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="font-display text-3xl lg:text-4xl font-extrabold text-white">50k+</div>
+                    <div class="text-white/55 text-sm mt-1">Alunos Certificados</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl lg:text-4xl font-extrabold text-white">120+</div>
+                    <div class="text-white/55 text-sm mt-1">Cursos Disponíveis</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl lg:text-4xl font-extrabold text-white">98%</div>
+                    <div class="text-white/55 text-sm mt-1">Taxa de Aprovação</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl lg:text-4xl font-extrabold text-white">4.9</div>
+                    <div class="text-white/55 text-sm mt-1">Avaliação Média</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Depoimentos -->
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-8 py-16">
+        <div class="text-center mb-10">
+            <h2 class="font-display text-2xl lg:text-3xl font-bold text-slate-900 mb-2">O que nossos alunos dizem</h2>
+            <p class="text-slate-500 text-sm">Histórias reais de quem transformou a carreira conosco</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div class="card bg-white border border-slate-100 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center gap-0.5 mb-3">
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-5">"O curso de Direito Constitucional me ajudou a passar no concurso da AGU. O conteúdo é muito bem estruturado e os professores são excelentes. Recomendo de olhos fechados!"</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-marca-100 flex items-center justify-center text-marca-800 font-bold text-sm">MC</div>
+                    <div><p class="font-semibold text-slate-900 text-sm">Maria Carolina Silva</p><p class="text-slate-400 text-xs">Advogada — São Paulo/SP</p></div>
+                </div>
+            </div>
+            <div class="card bg-white border border-slate-100 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center gap-0.5 mb-3">
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-5">"Consegui minha primeira vaga como desenvolvedor após concluir o curso Full Stack. A metodologia de ensino é incrível e o suporte pedagógico sempre disponível. Vale cada centavo!"</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-sm">AS</div>
+                    <div><p class="font-semibold text-slate-900 text-sm">André Santos</p><p class="text-slate-400 text-xs">Dev Full Stack — Belo Horizonte/MG</p></div>
+                </div>
+            </div>
+            <div class="card bg-white border border-slate-100 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                <div class="flex items-center gap-0.5 mb-3">
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-5">"Fiz o curso de Enfermagem em Emergências e hoje trabalho no SAMU. O conteúdo prático faz toda a diferença. A plataforma é muito fácil de usar e o certificado chegou rapidinho."</p>
+                <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+                    <div class="w-10 h-10 rounded-full bg-violet-100 flex items-center justify-center text-violet-700 font-bold text-sm">RP</div>
+                    <div><p class="font-semibold text-slate-900 text-sm">Renata Pereira</p><p class="text-slate-400 text-xs">Enfermeira — Rio de Janeiro/RJ</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="max-w-[1200px] mx-auto px-6 lg:px-8 mb-16">
+        <div class="relative bg-gradient-to-br from-marca-800 to-marca-900 rounded-2xl p-10 lg:p-14 overflow-hidden text-center">
+            <div class="absolute inset-0 opacity-5" style="background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><circle cx=%2220%22 cy=%2220%22 r=%221%22 fill=%22white%22/></svg>');background-size:40px 40px;"></div>
+            <div class="relative z-10">
+                <h2 class="font-display text-2xl lg:text-3xl font-extrabold text-white mb-3">Pronto para começar sua jornada?</h2>
+                <p class="text-white/65 mb-7 max-w-lg mx-auto">Junte-se a mais de 50 mil alunos que já transformaram suas carreiras. Cursos com certificado reconhecido em todo o Brasil.</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="mostrarTela('cadastro-usuario')" class="active:scale-95 transition-all duration-200 bg-white text-marca-900 font-bold px-8 py-3.5 rounded-xl hover:shadow-lg text-[15px]">Cadastrar Gratuitamente</button>
+                    <button onclick="mostrarTela('login-usuario')" class="active:scale-95 transition-all duration-200 bg-white/10 border border-white/20 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-white/15 text-[15px]">Já tenho conta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function home_cursos_em_destaque_filtrarCategoria(cat) {
+        mostrarTela('catalogo-de-cursos');
+    }
+    </script>
+</section>
+
+    <!-- TELAS -->
             </main>
         </div>
     </div>
