@@ -1737,6 +1737,417 @@
 })();
 </script>
 
+    <section data-tela="area-do-aluno" class="hidden">
+  <div class="flex h-[calc(100vh-64px)]">
+    <aside class="w-[260px] bg-marca-900 text-white flex flex-col flex-shrink-0">
+      <div class="p-6 pb-4">
+        <div class="flex items-center gap-3 mb-1">
+          <div class="w-10 h-10 rounded-full bg-marca-500 flex items-center justify-center text-sm font-bold flex-shrink-0">CM</div>
+          <div class="min-w-0">
+            <p class="font-semibold text-sm truncate">Carlos Eduardo</p>
+            <p class="text-xs text-slate-400 truncate">Aluno Premium</p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 px-3 space-y-0.5">
+        <button onclick="area_do_aluno_navegarMenu('meus-cursos')" class="area-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-marca-500/20 text-white transition-colors" data-menu="meus-cursos">
+          <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          Meus Cursos
+        </button>
+        <button onclick="area_do_aluno_navegarMenu('certificados')" class="area-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-300 hover:bg-marca-800 hover:text-white transition-colors" data-menu="certificados">
+          <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          Certificados
+        </button>
+        <button onclick="area_do_aluno_navegarMenu('carrinho')" class="area-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-300 hover:bg-marca-800 hover:text-white transition-colors" data-menu="carrinho">
+          <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          Carrinho
+          <span class="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">2</span>
+        </button>
+        <button onclick="area_do_aluno_navegarMenu('meus-dados')" class="area-menu-item w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-300 hover:bg-marca-800 hover:text-white transition-colors" data-menu="meus-dados">
+          <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          Meus Dados
+        </button>
+      </nav>
+      <div class="p-3 border-t border-marca-800">
+        <button onclick="area_do_aluno_sair()" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-400 hover:bg-red-900/30 hover:text-red-300 transition-colors">
+          <svg class="w-[18px] h-[18px] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          Sair
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 overflow-y-auto bg-marca-50">
+      <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200/60 px-8 py-4">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h1 class="text-xl font-bold text-marca-900 font-display">Área do Aluno</h1>
+            <p class="text-sm text-slate-500 mt-0.5">Bem-vindo de volta, Carlos! Vamos continuar aprendendo.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="relative">
+              <input type="text" id="input-busca-cursos" placeholder="Buscar cursos..." oninput="area_do_aluno_filtrarCursos(this.value)" class="w-56 pl-9 pr-3 py-2 text-sm bg-slate-100 border-0 rounded-lg focus:ring-2 focus:ring-marca-500 focus:bg-white transition-all placeholder:text-slate-400">
+              <svg class="w-4 h-4 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <div class="relative">
+              <button onclick="area_do_aluno_toggleNotificacoes()" class="relative p-2 rounded-lg hover:bg-slate-100 transition-colors text-slate-600" id="btn-notificacoes">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <span id="badge-notificacoes" class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">4</span>
+              </button>
+              <div id="dropdown-notificacoes" class="hidden absolute right-0 top-full mt-2 w-80 bg-white rounded-xl shadow-xl border border-slate-200 z-30 overflow-hidden">
+                <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                  <h3 class="font-semibold text-sm text-marca-900">Notificações</h3>
+                  <button onclick="area_do_aluno_limparNotificacoes()" class="text-xs text-marca-500 hover:text-marca-700 font-medium">Limpar tudo</button>
+                </div>
+                <div id="lista-notificacoes" class="max-h-72 overflow-y-auto divide-y divide-slate-100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="p-8 space-y-6">
+        <div class="grid grid-cols-4 gap-4">
+          <div class="card p-5 flex items-center gap-4 hover:shadow-lg transition-shadow cursor-default">
+            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-marca-900 font-display">4</p>
+              <p class="text-xs text-slate-500">Cursos em Andamento</p>
+              <p class="text-[11px] text-green-600 font-medium mt-0.5">+1 este mês</p>
+            </div>
+          </div>
+          <div class="card p-5 flex items-center gap-4 hover:shadow-lg transition-shadow cursor-default">
+            <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-marca-900 font-display">127h</p>
+              <p class="text-xs text-slate-500">Horas Estudadas</p>
+              <p class="text-[11px] text-green-600 font-medium mt-0.5">+18h esta semana</p>
+            </div>
+          </div>
+          <div class="card p-5 flex items-center gap-4 hover:shadow-lg transition-shadow cursor-default">
+            <div class="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-marca-900 font-display">2</p>
+              <p class="text-xs text-slate-500">Certificados</p>
+              <p class="text-[11px] text-green-600 font-medium mt-0.5">1 em andamento</p>
+            </div>
+          </div>
+          <div class="card p-5 flex items-center gap-4 hover:shadow-lg transition-shadow cursor-default">
+            <div class="w-12 h-12 rounded-xl bg-violet-100 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-marca-900 font-display">65%</p>
+              <p class="text-xs text-slate-500">Média de Progresso</p>
+              <p class="text-[11px] text-amber-600 font-medium mt-0.5">+5% vs. semana passada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-6">
+          <h3 class="text-sm font-semibold text-marca-900 mb-4">Progresso Semanal de Estudos</h3>
+          <div class="flex items-end gap-3 h-40">
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:55%"></div></div>
+              <span class="text-[10px] text-slate-400">Seg</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:80%"></div></div>
+              <span class="text-[10px] text-slate-400">Ter</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:40%"></div></div>
+              <span class="text-[10px] text-slate-400">Qua</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:65%"></div></div>
+              <span class="text-[10px] text-slate-400">Qui</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:90%"></div></div>
+              <span class="text-[10px] text-slate-400">Sex</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:30%"></div></div>
+              <span class="text-[10px] text-slate-400">Sáb</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1">
+              <div class="w-full bg-marca-100 rounded-t-md relative" style="height:100%"><div class="absolute bottom-0 w-full bg-marca-500 rounded-t-md transition-all duration-700" style="height:45%"></div></div>
+              <span class="text-[10px] text-slate-400">Dom</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-bold text-marca-900 font-display">Meus Cursos</h2>
+            <button onclick="mostrarTela('catalogo-de-cursos')" class="text-sm text-marca-500 hover:text-marca-700 font-medium transition-colors flex items-center gap-1">
+              Ver todos
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div id="cursos-grid" class="grid grid-cols-2 gap-4"></div>
+          <div id="cursos-vazio" class="hidden text-center py-16">
+            <svg class="w-16 h-16 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <p class="text-slate-500 font-medium">Nenhum curso encontrado</p>
+            <p class="text-sm text-slate-400 mt-1">Tente buscar com outro termo</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-bold text-marca-900 font-display mb-1">Cursos Recomendados</h2>
+          <p class="text-sm text-slate-500 mb-4">Baseado no seu histórico e interesses</p>
+          <div id="recomendados-grid" class="grid grid-cols-4 gap-4"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const dadosAluno = {
+      nome: 'Carlos Eduardo Mendes',
+      email: 'carlos.mendes@email.com',
+      telefone: '(11) 98765-4321',
+      cpf: '123.456.789-00'
+    };
+
+    const cursos = [
+      { id: 'c1', titulo: 'Inglês Completo', subtitulo: 'Do básico ao avançado', progresso: 65, ultimaAula: 'Unit 6 — Present Perfect Continuous', totalAulas: 120, aulasAssistidas: 78, instrutor: 'Prof. Sarah Mitchell', cor: 'blue', duracao: '6 meses' },
+      { id: 'c2', titulo: 'Excel Profissional Avançado', subtitulo: 'Domine planilhas e dados', progresso: 40, ultimaAula: 'Fórmulas e Tabelas Dinâmicas', totalAulas: 60, aulasAssistidas: 24, instrutor: 'Prof. Ricardo Almeida', cor: 'emerald', duracao: '3 meses' },
+      { id: 'c3', titulo: 'Marketing Digital', subtitulo: 'Tráfego pago e orgânico', progresso: 82, ultimaAula: 'Google Ads e Meta Ads', totalAulas: 80, aulasAssistidas: 66, instrutor: 'Profa. Ana Beatriz Costa', cor: 'violet', duracao: '4 meses' },
+      { id: 'c4', titulo: 'Programação Web Fullstack', subtitulo: 'HTML, CSS, JS e Node.js', progresso: 25, ultimaAula: 'Introdução ao HTML5 e CSS3', totalAulas: 150, aulasAssistidas: 38, instrutor: 'Prof. Lucas Ferreira', cor: 'amber', duracao: '8 meses' },
+      { id: 'c5', titulo: 'Gestão de Projetos com Scrum', subtitulo: 'Metodologias ágeis', progresso: 55, ultimaAula: 'Metodologias Ágeis na Prática', totalAulas: 45, aulasAssistidas: 25, instrutor: 'Profa. Patrícia Gomes', cor: 'rose', duracao: '2 meses' },
+      { id: 'c6', titulo: 'Oratória e Comunicação Eficaz', subtitulo: 'Fale com confiança', progresso: 90, ultimaAula: 'Técnicas de Apresentação Final', totalAulas: 30, aulasAssistidas: 27, instrutor: 'Prof. Marcelo Ribeiro', cor: 'cyan', duracao: '1 mês' }
+    ];
+
+    const recomendados = [
+      { id: 'r1', titulo: 'Fotografia Digital Profissional', subtitulo: 'Domine sua câmera e edição', preco: 197, avaliacao: 4.8, alunos: 2340, cor: 'from-slate-600 to-slate-800' },
+      { id: 'r2', titulo: 'Data Science e Machine Learning', subtitulo: 'Python, Pandas e IA', preco: 297, avaliacao: 4.9, alunos: 1890, cor: 'from-indigo-600 to-indigo-800' },
+      { id: 'r3', titulo: 'Liderança e Gestão de Equipes', subtitulo: 'Torne-se um líder inspirador', preco: 147, avaliacao: 4.7, alunos: 3120, cor: 'from-teal-600 to-teal-800' },
+      { id: 'r4', titulo: 'Design Gráfico com Adobe', subtitulo: 'Photoshop, Illustrator e Figma', preco: 227, avaliacao: 4.8, alunos: 1560, cor: 'from-pink-600 to-pink-800' }
+    ];
+
+    const notificacoes = [
+      { id: 'n1', tipo: 'aula', titulo: 'Nova aula disponível', descricao: 'Inglês — Unit 7: Future Perfect', tempo: 'há 2 horas', lida: false },
+      { id: 'n2', tipo: 'prazo', titulo: 'Prazo de entrega', descricao: 'Atividade de Marketing Digital — vence amanhã', tempo: 'há 4 horas', lida: false },
+      { id: 'n3', tipo: 'promocao', titulo: 'Promoção especial', descricao: '50% OFF em todos os cursos de tecnologia', tempo: 'ontem', lida: false },
+      { id: 'n4', tipo: 'certificado', titulo: 'Certificado disponível', descricao: 'Seu certificado de Oratória está pronto!', tempo: 'há 3 dias', lida: false }
+    ];
+
+    const corMap = {
+      blue: { bg: 'bg-blue-100', text: 'text-blue-600', bar: 'bg-blue-500' },
+      emerald: { bg: 'bg-emerald-100', text: 'text-emerald-600', bar: 'bg-emerald-500' },
+      violet: { bg: 'bg-violet-100', text: 'text-violet-600', bar: 'bg-violet-500' },
+      amber: { bg: 'bg-amber-100', text: 'text-amber-600', bar: 'bg-amber-500' },
+      rose: { bg: 'bg-rose-100', text: 'text-rose-600', bar: 'bg-rose-500' },
+      cyan: { bg: 'bg-cyan-100', text: 'text-cyan-600', bar: 'bg-cyan-500' }
+    };
+
+    function area_do_aluno_navegarMenu(menu) {
+      document.querySelectorAll('.area-menu-item').forEach(el => {
+        el.classList.remove('bg-marca-500/20', 'text-white');
+        el.classList.add('text-slate-300', 'hover:bg-marca-800', 'hover:text-white');
+      });
+      const ativo = document.querySelector(`[data-menu="${menu}"]`);
+      if (ativo) {
+        ativo.classList.add('bg-marca-500/20', 'text-white');
+        ativo.classList.remove('text-slate-300', 'hover:bg-marca-800', 'hover:text-white');
+      }
+      if (menu === 'meus-cursos') { mostrarTela('area-do-aluno'); }
+      else if (menu === 'certificados') { mostrarTela('certificado-de-conclusao'); }
+      else if (menu === 'carrinho') { mostrarTela('checkout-e-pagamento'); }
+      else if (menu === 'meus-dados') { abrirModal(area_do_aluno_htmlDados(), 'Meus Dados'); }
+    }
+
+    function area_do_aluno_htmlDados() {
+      return `<div class="space-y-4 p-1">
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="block text-xs font-medium text-slate-500 mb-1">Nome completo</label><input type="text" value="${dadosAluno.nome}" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-marca-500 focus:border-marca-500" id="dado-nome"></div>
+          <div><label class="block text-xs font-medium text-slate-500 mb-1">E-mail</label><input type="email" value="${dadosAluno.email}" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-marca-500 focus:border-marca-500" id="dado-email"></div>
+          <div><label class="block text-xs font-medium text-slate-500 mb-1">Telefone</label><input type="text" value="${dadosAluno.telefone}" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-marca-500 focus:border-marca-500" id="dado-telefone"></div>
+          <div><label class="block text-xs font-medium text-slate-500 mb-1">CPF</label><input type="text" value="${dadosAluno.cpf}" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-marca-500 focus:border-marca-500" id="dado-cpf"></div>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button onclick="fecharModal()" class="px-4 py-2 text-sm text-slate-600 hover:text-slate-800 font-medium transition-colors">Cancelar</button>
+          <button onclick="area_do_aluno_salvarDados()" class="btn px-5 py-2 text-sm">Salvar Alterações</button>
+        </div>
+      </div>`;
+    }
+
+    function area_do_aluno_salvarDados() {
+      const nome = document.getElementById('dado-nome')?.value;
+      if (nome) dadosAluno.nome = nome;
+      toast('Dados atualizados com sucesso!', 'ok');
+      fecharModal();
+    }
+
+    function area_do_aluno_sair() {
+      abrirModal(`<div class="text-center py-4"><svg class="w-12 h-12 text-amber-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg><p class="text-slate-600 mb-1">Deseja realmente sair?</p><p class="text-sm text-slate-400 mb-5">Você pode retomar seus estudos quando quiser.</p><div class="flex justify-center gap-2"><button onclick="fecharModal()" class="px-5 py-2 text-sm text-slate-600 hover:text-slate-800 font-medium border border-slate-200 rounded-lg transition-colors">Cancelar</button><button onclick="area_do_aluno_confirmarSaida()" class="btn px-5 py-2 text-sm bg-red-600 hover:bg-red-700 text-white">Sair da Conta</button></div></div>`, 'Confirmar Saída');
+    }
+
+    function area_do_aluno_confirmarSaida() {
+      fecharModal();
+      toast('Você saiu da sua conta. Até logo!', 'info');
+      setTimeout(() => mostrarTela('home-cursos-em-destaque'), 800);
+    }
+
+    function area_do_aluno_toggleNotificacoes() {
+      const dd = document.getElementById('dropdown-notificacoes');
+      dd.classList.toggle('hidden');
+      if (!dd.classList.contains('hidden')) area_do_aluno_renderNotificacoes();
+    }
+
+    function area_do_aluno_renderNotificacoes() {
+      const el = document.getElementById('lista-notificacoes');
+      if (!el) return;
+      if (notificacoes.length === 0) {
+        el.innerHTML = '<div class="text-center py-8 text-sm text-slate-400">Nenhuma notificação</div>';
+        return;
+      }
+      const icones = { aula: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>', prazo: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>', promocao: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>', certificado: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>' };
+      const coresIcone = { aula: 'text-blue-500 bg-blue-50', prazo: 'text-amber-500 bg-amber-50', promocao: 'text-rose-500 bg-rose-50', certificado: 'text-emerald-500 bg-emerald-50' };
+      el.innerHTML = notificacoes.map(n => `<div class="flex gap-3 px-4 py-3 hover:bg-slate-50 transition-colors ${n.lida ? 'opacity-60' : ''}">
+        <div class="w-8 h-8 rounded-lg ${coresIcone[n.tipo]} flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">${icones[n.tipo]}</svg></div>
+        <div class="min-w-0"><p class="text-sm font-medium text-marca-900 truncate">${n.titulo}</p><p class="text-xs text-slate-500 truncate">${n.descricao}</p><p class="text-[11px] text-slate-400 mt-0.5">${n.tempo}</p></div>
+      </div>`).join('');
+    }
+
+    function area_do_aluno_limparNotificacoes() {
+      notificacoes.forEach(n => n.lida = true);
+      const badge = document.getElementById('badge-notificacoes');
+      badge.textContent = '0';
+      badge.classList.add('hidden');
+      area_do_aluno_renderNotificacoes();
+      toast('Todas as notificações foram marcadas como lidas', 'ok');
+    }
+
+    function area_do_aluno_filtrarCursos(termo) {
+      const termoLower = termo.toLowerCase().trim();
+      const cards = document.querySelectorAll('#cursos-grid .curso-card');
+      let visiveis = 0;
+      cards.forEach(card => {
+        const titulo = card.dataset.titulo.toLowerCase();
+        const subtitulo = card.dataset.subtitulo.toLowerCase();
+        const instrutor = card.dataset.instrutor.toLowerCase();
+        const match = !termoLower || titulo.includes(termoLower) || subtitulo.includes(termoLower) || instrutor.includes(termoLower);
+        card.style.display = match ? '' : 'none';
+        if (match) visiveis++;
+      });
+      document.getElementById('cursos-vazio').classList.toggle('hidden', visiveis > 0);
+      document.getElementById('cursos-grid').classList.toggle('hidden', visiveis === 0);
+    }
+
+    function area_do_aluno_continuarCurso(id) {
+      const curso = cursos.find(c => c.id === id);
+      if (curso) {
+        toast(`Continuando: ${curso.titulo}`, 'info');
+        setTimeout(() => mostrarTela('player-de-aula'), 300);
+      }
+    }
+
+    function area_do_aluno_verCurso(id) {
+      const curso = cursos.find(c => c.id === id);
+      if (!curso) return;
+      const cor = corMap[curso.cor];
+      abrirModal(`<div class="space-y-4">
+        <div class="h-32 rounded-lg bg-gradient-to-br from-marca-800 to-marca-900 flex items-center justify-center"><svg class="w-12 h-12 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <div><h3 class="text-lg font-bold text-marca-900 font-display">${curso.titulo}</h3><p class="text-sm text-slate-500">${curso.subtitulo}</p></div>
+        <div class="flex items-center gap-2"><span class="badge ${cor.bg} ${cor.text}">${curso.progresso}% concluído</span><span class="text-xs text-slate-400">${curso.aulasAssistidas}/${curso.totalAulas} aulas</span></div>
+        <div><p class="text-xs text-slate-500 mb-1">Progresso</p><div class="h-2.5 bg-slate-200 rounded-full overflow-hidden"><div class="h-full ${cor.bar} rounded-full transition-all duration-500" style="width:${curso.progresso}%"></div></div></div>
+        <p class="text-sm text-slate-600"><span class="font-medium">Instrutor:</span> ${curso.instrutor}</p>
+        <p class="text-sm text-slate-600"><span class="font-medium">Duração:</span> ${curso.duracao}</p>
+        <p class="text-sm text-slate-600"><span class="font-medium">Última aula:</span> ${curso.ultimaAula}</p>
+        <div class="flex gap-2 pt-2"><button onclick="area_do_aluno_continuarCurso('${curso.id}');fecharModal();" class="btn flex-1 text-sm py-2.5">Continuar Assistindo</button><button onclick="mostrarTela('catalogo-de-cursos');fecharModal();" class="flex-1 text-sm py-2.5 border border-slate-200 rounded-lg text-slate-600 hover:bg-slate-50 font-medium transition-colors">Catálogo</button></div>
+      </div>`, curso.titulo);
+    }
+
+    function area_do_aluno_verCertificado(id) {
+      const cert = cursos.find(c => c.id === id);
+      if (cert) {
+        toast(`Certificado de "${cert.titulo}" — Em andamento (${cert.progresso}%)`, 'info');
+      }
+    }
+
+    function area_do_aluno_inscreverRecomendado(id) {
+      const rec = recomendados.find(r => r.id === id);
+      if (!rec) return;
+      toast(`"${rec.titulo}" adicionado ao carrinho!`, 'ok');
+      const btn = document.querySelector(`[data-rec="${id}"] .btn-inscrever`);
+      if (btn) {
+        btn.textContent = 'No Carrinho';
+        btn.classList.remove('btn-primary');
+        btn.classList.add('bg-emerald-500', 'text-white', 'cursor-default');
+        btn.disabled = true;
+      }
+    }
+
+    function renderCursos() {
+      const grid = document.getElementById('cursos-grid');
+      if (!grid) return;
+      grid.innerHTML = cursos.map(c => {
+        const cor = corMap[c.cor];
+        return `<div class="curso-card card overflow-hidden cursor-pointer transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5" data-titulo="${c.titulo}" data-subtitulo="${c.subtitulo}" data-instrutor="${c.instrutor}" onclick="area_do_aluno_verCurso('${c.id}')">
+          <div class="h-28 bg-gradient-to-br from-marca-800 to-marca-900 relative flex items-center justify-center">
+            <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm">
+              <svg class="w-7 h-7 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="absolute top-3 right-3 ${cor.bg} ${cor.text} text-[11px] font-bold px-2 py-0.5 rounded-full">${c.progresso}%</span>
+          </div>
+          <div class="p-4">
+            <h4 class="font-semibold text-marca-900 text-sm mb-0.5">${c.titulo}</h4>
+            <p class="text-xs text-slate-500 mb-3">${c.subtitulo}</p>
+            <div class="h-1.5 bg-slate-100 rounded-full overflow-hidden mb-2.5"><div class="h-full ${cor.bar} rounded-full transition-all duration-500" style="width:${c.progresso}%"></div></div>
+            <p class="text-[11px] text-slate-400 mb-3">Última aula: ${c.ultimaAula}</p>
+            <button onclick="event.stopPropagation();area_do_aluno_continuarCurso('${c.id}')" class="btn w-full text-sm py-2 active:scale-[0.97] transition-transform">Continuar</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+
+    function renderRecomendados() {
+      const grid = document.getElementById('recomendados-grid');
+      if (!grid) return;
+      grid.innerHTML = recomendados.map(r => `<div class="card overflow-hidden group">
+        <div class="h-28 bg-gradient-to-br ${r.cor} relative flex items-center justify-center">
+          <svg class="w-10 h-10 text-white/30 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold text-marca-900 text-sm mb-0.5">${r.titulo}</h4>
+          <p class="text-xs text-slate-500 mb-2">${r.subtitulo}</p>
+          <div class="flex items-center gap-1 mb-3">
+            <svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <span class="text-xs font-medium text-slate-600">${r.avaliacao}</span>
+            <span class="text-[11px] text-slate-400 ml-1">(${r.alunos.toLocaleString('pt-BR')})</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-lg font-bold text-marca-900">${brl(r.preco)}</span>
+          </div>
+          <button data-rec="${r.id}" onclick="area_do_aluno_inscreverRecomendado('${r.id}')" class="btn-inscrever btn btn-primary w-full text-sm py-2 mt-3 active:scale-[0.97] transition-transform">Matricular-se</button>
+        </div>
+      </div>`).join('');
+    }
+
+    function area_do_aluno_init() {
+      renderCursos();
+      renderRecomendados();
+      document.addEventListener('click', function(e) {
+        const notifBtn = document.getElementById('btn-notificacoes');
+        const dropdown = document.getElementById('dropdown-notificacoes');
+        if (notifBtn && dropdown && !notifBtn.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.classList.add('hidden');
+        }
+      });
+    }
+
+    setTimeout(area_do_aluno_init, 0);
+  </script>
+</section>
+
     <!-- TELAS -->
             </main>
         </div>
