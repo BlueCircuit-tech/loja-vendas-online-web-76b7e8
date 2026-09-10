@@ -2148,6 +2148,581 @@
   </script>
 </section>
 
+    <section data-tela="player-de-aula" class="hidden">
+  <div class="max-w-[1440px] mx-auto p-6 lg:p-8">
+    <div class="mb-6">
+      <div class="flex items-center justify-between mb-2">
+        <div>
+          <nav class="flex items-center gap-2 text-sm text-cinza-600 mb-2">
+            <button onclick="player_de_aula_navegar('catalogo-de-cursos')" class="hover:text-marca-700 transition-colors">Catálogo</button>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <button onclick="player_de_aula_navegar('detalhes-do-curso')" class="hover:text-marca-700 transition-colors">Curso</button>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-marca-700 font-medium">Módulo 3</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-cinza-500">Aula 4</span>
+          </nav>
+          <h1 class="font-display text-2xl lg:text-3xl font-bold text-marca-900">Módulo 3 — Planejamento Financeiro Pessoal</h1>
+        </div>
+        <button onclick="player_de_aula_navegar('area-do-aluno')" class="hidden lg:flex items-center gap-2 px-4 py-2 text-sm text-marca-600 border border-marca-200 rounded-lg hover:bg-marca-50 transition-all active:scale-95">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          Voltar para Área do Aluno
+        </button>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex-1 h-3 bg-marca-100 rounded-full overflow-hidden">
+          <div id="barra-progresso-curso" class="h-full bg-gradient-to-r from-marca-500 to-destaque rounded-full transition-all duration-500" style="width:37%"></div>
+        </div>
+        <span id="texto-progresso-curso" class="text-sm font-medium text-marca-600 whitespace-nowrap">37% concluído</span>
+      </div>
+    </div>
+
+    <div class="flex flex-col xl:flex-row gap-6">
+      <div class="flex-1 min-w-0">
+        <div class="relative bg-marca-900 rounded-2xl overflow-hidden aspect-video shadow-xl" id="container-video">
+          <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-marca-800 to-marca-900">
+            <div class="text-center">
+              <div class="w-24 h-24 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+                <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <p class="text-white/80 text-lg font-medium">Orçamento Doméstico: Como montar e controlar</p>
+              <p class="text-white/50 text-sm mt-1">Duração: 24 min 30 seg</p>
+            </div>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 pt-12">
+            <div class="flex items-center gap-3">
+              <button onclick="player_de_aula_togglePlay()" id="btn-play" class="w-10 h-10 rounded-full bg-white text-marca-900 flex items-center justify-center hover:bg-gray-100 transition-all active:scale-90">
+                <svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <div class="flex-1">
+                <div class="h-1.5 bg-white/20 rounded-full cursor-pointer" onclick="player_de_aula_seek(event)">
+                  <div id="barra-video" class="h-full bg-white rounded-full transition-all" style="width:0%"></div>
+                </div>
+              </div>
+              <span id="tempo-video" class="text-white/80 text-xs font-mono">00:00 / 24:30</span>
+              <div class="flex items-center gap-1">
+                <button onclick="player_de_aula_toggleMute()" id="btn-volume" class="p-2 text-white/80 hover:text-white transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+                <select onchange="player_de_aula_velocidade(this.value)" id="select-velocidade" class="bg-transparent text-white/80 text-xs border border-white/20 rounded px-1.5 py-1 cursor-pointer hover:bg-white/10 transition-colors">
+                  <option value="0.5" class="text-marca-900">0.5x</option>
+                  <option value="0.75" class="text-marca-900">0.75x</option>
+                  <option value="1" selected class="text-marca-900">1x</option>
+                  <option value="1.25" class="text-marca-900">1.25x</option>
+                  <option value="1.5" class="text-marca-900">1.5x</option>
+                  <option value="2" class="text-marca-900">2x</option>
+                </select>
+                <button onclick="player_de_aula_fullscreen()" class="p-2 text-white/80 hover:text-white transition-colors">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 bg-white rounded-xl border border-marca-100 shadow-sm overflow-hidden">
+          <div class="flex border-b border-marca-100">
+            <button onclick="player_de_aula_mudarAba('conteudo')" id="aba-conteudo" class="aba-btn flex-1 px-6 py-3.5 text-sm font-semibold text-marca-700 border-b-2 border-marca-500 transition-all">Conteúdo da Aula</button>
+            <button onclick="player_de_aula_mudarAba('materiais')" id="aba-materiais" class="aba-btn flex-1 px-6 py-3.5 text-sm font-semibold text-cinza-500 border-b-2 border-transparent hover:text-marca-600 transition-all">Materiais para Download</button>
+            <button onclick="player_de_aula_mudarAba('avaliacao')" id="aba-avaliacao" class="aba-btn flex-1 px-6 py-3.5 text-sm font-semibold text-cinza-500 border-b-2 border-transparent hover:text-marca-600 transition-all">Avaliação</button>
+          </div>
+          <div class="p-6">
+            <div id="painel-conteudo" class="aba-painel">
+              <h3 class="font-display text-lg font-bold text-marca-900 mb-3">Orçamento Doméstico: Como montar e controlar</h3>
+              <div class="prose max-w-none text-cinza-700 text-sm leading-relaxed space-y-4">
+                <p>Nesta aula, você aprenderá a estruturar um orçamento doméstico eficiente que permita controlar gastos, identificar oportunidades de economia e direcionar recursos para seus objetivos financeiros.</p>
+                <h4 class="font-display font-bold text-marca-800 text-base">Tópicos abordados:</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Conceito e importância do orçamento doméstico</li>
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Classificação de gastos: fixos, variáveis e supérfluos</li>
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Ferramentas e planilhas para controle financeiro</li>
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Estratégia 50-30-20: uma abordagem prática</li>
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Reserva de emergência: como constituir</li>
+                  <li class="flex items-start gap-2"><svg class="w-5 h-5 text-destaque mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Exercício prático: montando seu orçamento</li>
+                </ul>
+                <div class="bg-marca-50 border border-marca-200 rounded-lg p-4 mt-4">
+                  <h4 class="font-display font-bold text-marca-800 text-sm mb-1">📌 Resumo da Aula</h4>
+                  <p class="text-sm text-cinza-700">Um orçamento doméstico bem estruturado é a base da saúde financeira. Ele permite visualizar para onde vai cada real e tomar decisões conscientes sobre gastos e investimentos. A chave está na consistência: registrar tudo e revisar periodicamente.</p>
+                </div>
+              </div>
+            </div>
+            <div id="painel-materiais" class="aba-painel hidden">
+              <h3 class="font-display text-lg font-bold text-marca-900 mb-4">Materiais Complementares</h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-4 p-4 bg-cinza-50 rounded-xl border border-marca-100 hover:border-marca-300 hover:shadow-md transition-all group">
+                  <div class="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-marca-900 truncate">Apostila_M3_A4_Orcamento_Domestico.pdf</p>
+                    <p class="text-xs text-cinza-500">PDF • 2.4 MB • 18 páginas</p>
+                  </div>
+                  <button onclick="player_de_aula_download('Apostila_M3_A4')" class="btn btn-sm bg-marca-600 text-white hover:bg-marca-700 active:scale-95 flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Baixar
+                  </button>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-cinza-50 rounded-xl border border-marca-100 hover:border-marca-300 hover:shadow-md transition-all group">
+                  <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-marca-900 truncate">Slides_Aula4_Orcamento_Domestico.pdf</p>
+                    <p class="text-xs text-cinza-500">PDF • 5.1 MB • 32 slides</p>
+                  </div>
+                  <button onclick="player_de_aula_download('Slides_Aula4')" class="btn btn-sm bg-marca-600 text-white hover:bg-marca-700 active:scale-95 flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Baixar
+                  </button>
+                </div>
+                <div class="flex items-center gap-4 p-4 bg-cinza-50 rounded-xl border border-marca-100 hover:border-marca-300 hover:shadow-md transition-all group">
+                  <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <p class="font-semibold text-sm text-marca-900 truncate">Planilha_Modelo_Orcamento.xlsx</p>
+                    <p class="text-xs text-cinza-500">XLSX • 340 KB • Planilha editável</p>
+                  </div>
+                  <button onclick="player_de_aula_download('Planilha_Modelo')" class="btn btn-sm bg-marca-600 text-white hover:bg-marca-700 active:scale-95 flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Baixar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="painel-avaliacao" class="aba-painel hidden">
+              <div id="quiz-nao-iniciado">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <h3 class="font-display text-lg font-bold text-marca-900">Avaliação da Aula</h3>
+                    <p class="text-sm text-cinza-500 mt-1">Teste seus conhecimentos sobre orçamento doméstico. Você precisa acertar pelo menos 70% das questões.</p>
+                  </div>
+                  <span class="badge badge-info">5 questões</span>
+                </div>
+                <div class="bg-marca-50 border border-marca-200 rounded-xl p-6 text-center">
+                  <svg class="w-12 h-12 mx-auto text-marca-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                  <p class="text-sm text-marca-700 mb-4">Assista ao vídeo completo para liberar a avaliação, ou inicie agora para testar seus conhecimentos.</p>
+                  <button onclick="player_de_aula_iniciarQuiz()" class="btn btn-primary px-6 py-2.5 active:scale-95">Iniciar Avaliação</button>
+                </div>
+              </div>
+              <div id="quiz-em-andamento" class="hidden">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="font-display text-lg font-bold text-marca-900">Questionário</h3>
+                  <div class="flex items-center gap-3">
+                    <span id="quiz-contador" class="text-sm text-cinza-500">Questão 1 de 5</span>
+                    <span id="quiz-tempo" class="text-sm font-mono text-marca-600">05:00</span>
+                  </div>
+                </div>
+                <div class="mb-4 h-2 bg-marca-100 rounded-full overflow-hidden">
+                  <div id="quiz-progresso" class="h-full bg-destaque rounded-full transition-all duration-300" style="width:20%"></div>
+                </div>
+                <div id="quiz-questao-container" class="mb-6"></div>
+                <div class="flex items-center justify-between">
+                  <button onclick="player_de_aula_voltarQuestao()" id="btn-voltar-q" class="btn btn-outline hidden">Anterior</button>
+                  <button onclick="player_de_aula_proximaQuestao()" id="btn-proxima-q" class="btn btn-primary ml-auto active:scale-95">Próxima</button>
+                </div>
+              </div>
+              <div id="quiz-resultado" class="hidden text-center py-8">
+                <div id="quiz-resultado-icone" class="w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4"></div>
+                <h3 id="quiz-resultado-titulo" class="font-display text-2xl font-bold text-marca-900 mb-2"></h3>
+                <p id="quiz-resultado-texto" class="text-cinza-600 mb-1"></p>
+                <p id="quiz-resultado-nota" class="text-3xl font-bold text-marca-700 mb-6"></p>
+                <div id="quiz-resultado-detalhes" class="max-w-md mx-auto mb-6"></div>
+                <button onclick="player_de_aula_reenviarQuiz()" class="btn btn-outline active:scale-95">Tentar Novamente</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="w-full xl:w-96 flex-shrink-0">
+        <div class="bg-white rounded-xl border border-marca-100 shadow-sm overflow-hidden">
+          <div class="p-4 border-b border-marca-100 bg-marca-50/50">
+            <h3 class="font-display font-bold text-marca-900 text-sm">Conteúdo do Curso</h3>
+            <p class="text-xs text-cinza-500 mt-0.5">Educação Financeira Completa</p>
+            <div class="mt-3 flex items-center gap-2">
+              <div class="flex-1 h-2 bg-marca-100 rounded-full">
+                <div class="h-full bg-destaque rounded-full" style="width:37%"></div>
+              </div>
+              <span class="text-xs font-semibold text-marca-600">37%</span>
+            </div>
+          </div>
+          <div class="divide-y divide-marca-100 max-h-[580px] overflow-y-auto" id="playlist"></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const estado = {
+    tocando: false,
+    tempoAtual: 0,
+    duracao: 1470,
+    velocidade: 1,
+    muted: false,
+    abaAtiva: 'conteudo',
+    quizQuestao: 0,
+    quizRespondidas: {},
+    quizFinalizado: false,
+    timerInterval: null,
+    tempoQuiz: 300,
+    aulaSelecionada: 3
+  };
+
+  const aulas = [
+    { id:1, modulo:1, titulo:'Introdução à Educação Financeira', duracao:'18:00', assistida:true, tipo:'video' },
+    { id:2, modulo:1, titulo:'Mentalidade Financeira: mindset de riqueza', duracao:'22:15', assistida:true, tipo:'video' },
+    { id:3, modulo:1, titulo:'Quiz: Módulo 1 — Conceitos Básicos', duracao:'10:00', assistida:true, tipo:'quiz' },
+    { id:4, modulo:2, titulo:'Renda Fixa e Renda Variável', duracao:'31:00', assistida:true, tipo:'video' },
+    { id:5, modulo:2, titulo:'Tesouro Direto na prática', duracao:'26:45', assistida:true, tipo:'video' },
+    { id:6, modulo:2, titulo:'CDB, LCI e LCA: quais escolher?', duracao:'19:30', assistida:true, tipo:'video' },
+    { id:7, modulo:2, titulo:'Ações para iniciantes', duracao:'35:10', assistida:false, tipo:'video' },
+    { id:8, modulo:3, titulo:'Organizando as finanças pessoais', duracao:'20:00', assistida:true, tipo:'video' },
+    { id:9, modulo:3, titulo:'Orçamento Doméstico: Como montar e controlar', duracao:'24:30', assistida:false, tipo:'video' },
+    { id:10, modulo:3, titulo:'Reserva de emergência', duracao:'15:00', assistida:false, tipo:'video' },
+    { id:11, modulo:4, titulo:'Independência Financeira', duracao:'28:00', assistida:false, tipo:'video' },
+    { id:12, modulo:4, titulo:'Certificação e Próximos Passos', duracao:'12:00', assistida:false, tipo:'pdf' }
+  ];
+
+  const perguntas = [
+    {
+      id:1, texto:'Qual é o primeiro passo para montar um orçamento doméstico eficiente?',
+      opcoes:['Comprar um aplicativo de finanças','Levantar todos os gastos e receitas','Pedir um empréstimo','Investir na bolsa'],
+      correta:1
+    },
+    {
+      id:2, texto:'De acordo com a regra 50-30-20, quanto deve ser destinado a gastos essenciais?',
+      opcoes:['30%','20%','50%','40%'],
+      correta:2
+    },
+    {
+      id:3, texto:'O que caracteriza um gasto fixo?',
+      opcoes:['Gasto que sempre aumenta','Gasto que varia todo mês','Gasto com valor previsível e recorrente','Gasto de lazer'],
+      correta:2
+    },
+    {
+      id:4, texto:'Qual valor é recomendado para uma reserva de emergência?',
+      opcoes:['1 salário mínimo','Entre 3 e 6 meses de gastos','1 ano de investimentos','10% da renda'],
+      correta:1
+    },
+    {
+      id:5, texto:'Qual destas NÃO é uma categoria típica de gastos variáveis?',
+      opcoes:['Supermercado','Conta de luz','Aluguel','Transporte'],
+      correta:2
+    }
+  ];
+
+  function renderizarPlaylist(){
+    const el = document.getElementById('playlist');
+    const modulos = {};
+    aulas.forEach(a => {
+      if(!modulos[a.modulo]) modulos[a.modulo] = [];
+      modulos[a.modulo].push(a);
+    });
+    let html = '';
+    for(let m = 1; m <= Object.keys(modulos).length; m++){
+      html += '<div class="px-4 py-2 bg-marca-50 text-xs font-bold text-marca-500 uppercase tracking-wider">Módulo ' + m + '</div>';
+      (modulos[m]||[]).forEach(a => {
+        const ativo = estado.aulaSelecionada === a.id;
+        html += '<div onclick="player_de_aula_selecionarAula(' + a.id + ')" class="flex items-center gap-3 px-4 py-3 cursor-pointer transition-all hover:bg-marca-50 ' + (ativo ? 'bg-marca-50 border-l-4 border-marca-500' : 'border-l-4 border-transparent') + '">';
+        html += '<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ' + (a.assistida ? 'bg-emerald-100 text-emerald-600' : 'bg-marca-100 text-marca-500') + '">';
+        if(a.assistida) html += '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+        else if(a.tipo === 'quiz') html += '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>';
+        else html += '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+        html += '</div>';
+        html += '<div class="flex-1 min-w-0"><p class="text-sm truncate ' + (ativo ? 'text-marca-900 font-semibold' : 'text-cinza-700') + '">' + a.titulo + '</p>';
+        html += '<p class="text-xs text-cinza-400 mt-0.5">Aula ' + a.id + ' • ' + a.duracao + '</p></div>';
+        html += '<div class="flex-shrink-0">';
+        if(a.assistida) html += '<span class="badge badge-success text-xs">Assistido</span>';
+        else if(ativo) html += '<span class="w-2 h-2 bg-destaque rounded-full animate-pulse"></span>';
+        else html += '<svg class="w-4 h-4 text-cinza-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/></svg>';
+        html += '</div></div>';
+      });
+    }
+    el.innerHTML = html;
+  }
+
+  window.player_de_aula_selecionarAula = function(id){
+    estado.aulaSelecionada = id;
+    estado.tempoAtual = 0;
+    estado.tocando = false;
+    estado.quizFinalizado = false;
+    estado.quizQuestao = 0;
+    estado.quizRespondidas = {};
+    estado.tempoQuiz = 300;
+    if(estado.timerInterval) clearInterval(estado.timerInterval);
+    const aula = aulas.find(a => a.id === id);
+    if(aula) toast('Carregando: ' + aula.titulo, 'info');
+    document.getElementById('barra-video').style.width = '0%';
+    document.getElementById('tempo-video').textContent = '00:00 / ' + aula.duracao;
+    document.getElementById('btn-play').innerHTML = '<svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+    const btn = document.getElementById('btn-voltar-q');
+    const btnP = document.getElementById('btn-proxima-q');
+    if(btn) btn.classList.add('hidden');
+    document.getElementById('quiz-nao-iniciado').classList.remove('hidden');
+    document.getElementById('quiz-em-andamento').classList.add('hidden');
+    document.getElementById('quiz-resultado').classList.add('hidden');
+    renderizarPlaylist();
+  };
+
+  window.player_de_aula_togglePlay = function(){
+    estado.tocando = !estado.tocando;
+    const btn = document.getElementById('btn-play');
+    if(estado.tocando){
+      btn.innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>';
+      estado.timerInterval = setInterval(function(){ player_de_aula_avancar(); }, 1000);
+    } else {
+      btn.innerHTML = '<svg class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+      if(estado.timerInterval) clearInterval(estado.timerInterval);
+    }
+  };
+
+  function player_de_aula_avancar(){
+    if(estado.tempoAtual < estado.duracao){
+      estado.tempoAtual += estado.velocidade;
+      const pct = (estado.tempoAtual / estado.duracao) * 100;
+      document.getElementById('barra-video').style.width = Math.min(pct, 100) + '%';
+      const m = Math.floor(estado.tempoAtual / 60);
+      const s = Math.floor(estado.tempoAtual % 60);
+      const dm = Math.floor(estado.duracao / 60);
+      const ds = Math.floor(estado.duracao % 60);
+      document.getElementById('tempo-video').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' / ' + String(dm).padStart(2,'0') + ':' + String(ds).padStart(2,'0');
+    } else {
+      estado.tocando = false;
+      if(estado.timerInterval) clearInterval(estado.timerInterval);
+      toast('Aula concluída!', 'ok');
+    }
+  }
+
+  window.player_de_aula_seek = function(e){
+    const barra = e.currentTarget;
+    const rect = barra.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    estado.tempoAtual = pct * estado.duracao;
+    document.getElementById('barra-video').style.width = (pct * 100) + '%';
+  };
+
+  window.player_de_aula_toggleMute = function(){
+    estado.muted = !estado.muted;
+    const btn = document.getElementById('btn-volume');
+    btn.innerHTML = estado.muted
+      ? '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/></svg>'
+      : '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>';
+  };
+
+  window.player_de_aula_velocidade = function(v){
+    estado.velocidade = parseFloat(v);
+    toast('Velocidade: ' + v + 'x', 'info');
+  };
+
+  window.player_de_aula_fullscreen = function(){
+    const el = document.getElementById('container-video');
+    if(el.requestFullscreen) el.requestFullscreen();
+    else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+
+  window.player_de_aula_navegar = function(tela){
+    if(estado.timerInterval) clearInterval(estado.timerInterval);
+    mostrarTela(tela);
+  };
+
+  window.player_de_aula_mudarAba = function(aba){
+    estado.abaAtiva = aba;
+    document.querySelectorAll('.aba-btn').forEach(function(b){
+      b.classList.remove('text-marca-700','border-marca-500');
+      b.classList.add('text-cinza-500','border-transparent');
+    });
+    const btn = document.getElementById('aba-' + aba);
+    btn.classList.remove('text-cinza-500','border-transparent');
+    btn.classList.add('text-marca-700','border-marca-500');
+    document.querySelectorAll('.aba-painel').forEach(function(p){ p.classList.add('hidden'); });
+    document.getElementById('painel-' + aba).classList.remove('hidden');
+  };
+
+  window.player_de_aula_download = function(nome){
+    toast('Iniciando download de ' + nome + '...', 'ok');
+  };
+
+  function renderizarQuestao(){
+    const q = perguntas[estado.quizQuestao];
+    const container = document.getElementById('quiz-questao-container');
+    let html = '<p class="text-base text-cinza-800 font-medium mb-4">' + q.texto + '</p>';
+    html += '<div class="space-y-2.5">';
+    q.opcoes.forEach(function(op, i){
+      const selecionada = estado.quizRespondidas[estado.quizQuestao] === i;
+      const correta = estado.quizFinalizado && i === q.correta;
+      let estilo = 'border-marca-200 hover:border-marca-300 bg-white hover:bg-marca-50';
+      if(selecionada && !estado.quizFinalizado) estilo = 'border-destaque bg-destaque/5 ring-2 ring-destaque/20';
+      if(estado.quizFinalizado && correta) estilo = 'border-emerald-300 bg-emerald-50';
+      if(estado.quizFinalizado && selecionada && !correta) estilo = 'border-red-300 bg-red-50';
+      const desabilitado = estado.quizFinalizado ? 'opacity-70 cursor-default' : 'cursor-pointer';
+      html += '<button onclick="player_de_aula_responder(' + i + ')" ' + (estado.quizFinalizado ? 'disabled ' : '') + 'class="w-full text-left px-4 py-3 rounded-xl border ' + estilo + ' flex items-center gap-3 transition-all ' + desabilitado + '">';
+      html += '<span class="w-8 h-8 rounded-full border-2 ' + (selecionada && !estado.quizFinalizado ? 'border-destaque bg-destaque text-white' : 'border-marca-300 text-cinza-500') + ' flex items-center justify-center text-sm font-semibold flex-shrink-0 transition-all">' + String.fromCharCode(65+i) + '</span>';
+      html += '<span class="text-sm ' + (estado.quizFinalizado && correta ? 'text-emerald-700 font-medium' : estado.quizFinalizado && selecionada && !correta ? 'text-red-600' : 'text-cinza-700') + '">' + op + '</span>';
+      if(estado.quizFinalizado && correta) html += '<svg class="w-5 h-5 text-emerald-500 ml-auto flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>';
+      if(estado.quizFinalizado && selecionada && !correta) html += '<svg class="w-5 h-5 text-red-500 ml-auto flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>';
+      html += '</button>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+    document.getElementById('quiz-contador').textContent = 'Questão ' + (estado.quizQuestao + 1) + ' de ' + perguntas.length;
+    document.getElementById('quiz-progresso').style.width = ((estado.quizQuestao + 1) / perguntas.length * 100) + '%';
+    const btnV = document.getElementById('btn-voltar-q');
+    if(estado.quizQuestao === 0) btnV.classList.add('hidden');
+    else btnV.classList.remove('hidden');
+    const btnP = document.getElementById('btn-proxima-q');
+    if(estado.quizQuestao === perguntas.length - 1){
+      if(!estado.quizFinalizado){
+        const todasRespondidas = perguntas.every(function(_, i){ return estado.quizRespondidas[i] !== undefined; });
+        btnP.textContent = todasRespondidas ? 'Finalizar Avaliação' : 'Responda todas as questões';
+      } else {
+        btnP.classList.add('hidden');
+      }
+    } else {
+      btnP.textContent = 'Próxima';
+      btnP.classList.remove('hidden');
+    }
+  }
+
+  window.player_de_aula_iniciarQuiz = function(){
+    document.getElementById('quiz-nao-iniciado').classList.add('hidden');
+    document.getElementById('quiz-em-andamento').classList.remove('hidden');
+    renderizarQuestao();
+    estado.quizQuestao = 0;
+    estado.quizRespondidas = {};
+    estado.quizFinalizado = false;
+    estado.tempoQuiz = 300;
+    if(estado.timerInterval) clearInterval(estado.timerInterval);
+    estado.timerInterval = setInterval(function(){
+      estado.tempoQuiz--;
+      const m = Math.floor(estado.tempoQuiz / 60);
+      const s = estado.tempoQuiz % 60;
+      document.getElementById('quiz-tempo').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if(estado.tempoQuiz <= 60) document.getElementById('quiz-tempo').classList.add('text-red-500');
+      if(estado.tempoQuiz <= 0){
+        clearInterval(estado.timerInterval);
+        player_de_aula_finalizarQuiz();
+      }
+    }, 1000);
+  };
+
+  window.player_de_aula_responder = function(opcao){
+    if(estado.quizFinalizado) return;
+    estado.quizRespondidas[estado.quizQuestao] = opcao;
+    renderizarQuestao();
+  };
+
+  window.player_de_aula_proximaQuestao = function(){
+    if(estado.quizFinalizado){
+      player_de_aula_irProximaAula();
+      return;
+    }
+    if(estado.quizRespondidas[estado.quizQuestao] === undefined){
+      toast('Selecione uma resposta antes de prosseguir.', 'erro');
+      return;
+    }
+    if(estado.quizQuestao < perguntas.length - 1){
+      estado.quizQuestao++;
+      renderizarQuestao();
+    } else if(estado.quizRespondidas[estado.quizQuestao] !== undefined){
+      player_de_aula_finalizarQuiz();
+    }
+  };
+
+  window.player_de_aula_voltarQuestao = function(){
+    if(estado.quizQuestao > 0){
+      estado.quizQuestao--;
+      renderizarQuestao();
+    }
+  };
+
+  function player_de_aula_finalizarQuiz(){
+    estado.quizFinalizado = true;
+    if(estado.timerInterval) clearInterval(estado.timerInterval);
+    let acertos = 0;
+    perguntas.forEach(function(p, i){
+      if(estado.quizRespondidas[i] === p.correta) acertos++;
+    });
+    const nota = Math.round((acertos / perguntas.length) * 10);
+    const aprovado = nota >= 7;
+    document.getElementById('quiz-em-andamento').classList.add('hidden');
+    document.getElementById('quiz-resultado').classList.remove('hidden');
+    const icone = document.getElementById('quiz-resultado-icone');
+    if(aprovado){
+      icone.className = 'w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 bg-emerald-100';
+      icone.innerHTML = '<svg class="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    } else {
+      icone.className = 'w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4 bg-red-100';
+      icone.innerHTML = '<svg class="w-10 h-10 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    }
+    document.getElementById('quiz-resultado-titulo').textContent = aprovado ? 'Parabéns! Você foi aprovado!' : 'Continue estudando!';
+    document.getElementById('quiz-resultado-texto').textContent = aprovado ? 'Você demonstrou domínio do conteúdo desta aula.' : 'Você precisa acertar pelo menos 70% das questões para aprovação.';
+    document.getElementById('quiz-resultado-nota').textContent = nota.toFixed(1) + ' / 10,0';
+    document.getElementById('quiz-resultado-nota').className = 'text-3xl font-bold mb-6 ' + (aprovado ? 'text-emerald-600' : 'text-red-600');
+    let detalhes = '';
+    perguntas.forEach(function(p, i){
+      const ok = estado.quizRespondidas[i] === p.correta;
+      detalhes += '<div class="flex items-center gap-2 text-sm ' + (ok ? 'text-emerald-600' : 'text-red-500') + '">';
+      detalhes += '<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="' + (ok ? 'M5 13l4 4L19 7' : 'M6 18L18 6M6 6l12 12') + '"/></svg>';
+      detalhes += '<span class="text-left">Q' + (i+1) + ': ' + (ok ? 'Correta' : 'Incorreta') + '</span>';
+      detalhes += '</div>';
+    });
+    document.getElementById('quiz-resultado-detalhes').innerHTML = detalhes;
+    if(aprovado){
+      const btnP = document.getElementById('btn-proxima-q');
+      btnP.textContent = 'Ir para Próxima Aula';
+      btnP.classList.remove('hidden');
+      btnP.onclick = function(){ player_de_aula_irProximaAula(); };
+      toast('Avaliação aprovada com nota ' + nota.toFixed(1) + '!', 'ok');
+    } else {
+      toast('Nota insuficiente. Estude o conteúdo e tente novamente.', 'erro');
+    }
+  }
+
+  window.player_de_aula_reenviarQuiz = function(){
+    estado.quizQuestao = 0;
+    estado.quizRespondidas = {};
+    estado.quizFinalizado = false;
+    estado.tempoQuiz = 300;
+    document.getElementById('quiz-resultado').classList.add('hidden');
+    document.getElementById('quiz-em-andamento').classList.remove('hidden');
+    if(estado.timerInterval) clearInterval(estado.timerInterval);
+    estado.timerInterval = setInterval(function(){
+      estado.tempoQuiz--;
+      const m = Math.floor(estado.tempoQuiz / 60);
+      const s = estado.tempoQuiz % 60;
+      document.getElementById('quiz-tempo').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if(estado.tempoQuiz <= 60) document.getElementById('quiz-tempo').classList.add('text-red-500');
+      if(estado.tempoQuiz <= 0){
+        clearInterval(estado.timerInterval);
+        player_de_aula_finalizarQuiz();
+      }
+    }, 1000);
+    renderizarQuestao();
+  };
+
+  window.player_de_aula_irProximaAula = function(){
+    const aulaAtual = aulas.find(a => a.id === estado.aulaSelecionada);
+    if(aulaAtual){
+      const idx = aulas.indexOf(aulaAtual);
+      const proxima = aulas[idx + 1];
+      if(proxima){
+        aulaAtual.assistida = true;
+        mostrarTela('player-de-aula');
+        player_de_aula_selecionarAula(proxima.id);
+        toast('Indo para: ' + proxima.titulo, 'info');
+      } else {
+        mostrarTela('certificado-de-conclusao');
+      }
+    }
+  };
+
+  renderizarPlaylist();
+})();
+</script>
+
     <!-- TELAS -->
             </main>
         </div>
