@@ -615,6 +615,388 @@
     </script>
 </section>
 
+    <section data-tela="catalogo-de-cursos" class="hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8">
+            <button onclick="mostrarTela('home-cursos-em-destaque')" class="hover:text-marca-600 transition-colors">Home</button>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-marca-600 font-medium">Catálogo de Cursos</span>
+        </nav>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <aside class="w-full lg:w-72 flex-shrink-0 space-y-5">
+                <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5 space-y-5">
+                    <div class="flex items-center justify-between">
+                        <h2 class="font-display font-bold text-lg text-gray-900">Filtros</h2>
+                        <button onclick="catalogo_de_cursos_limparFiltros()" class="text-sm text-marca-600 hover:text-marca-700 font-medium">Limpar tudo</button>
+                    </div>
+
+                    <div class="relative">
+                        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="2"/><path stroke-linecap="round" stroke-width="2" d="M21 21l-4.35-4.35"/></svg>
+                        <input type="text" id="catalogo-busca-input" placeholder="Buscar cursos..."
+                            oninput="catalogo_de_cursos_buscar(this.value)"
+                            onfocus="catalogo_de_cursos_abrirSugestoes()"
+                            onblur="setTimeout(catalogo_de_cursos_fecharSugestoes,200)"
+                            class="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-marca-500/20 focus:border-marca-500 transition-all outline-none">
+                        <div id="catalogo-sugestoes" class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-lg max-h-48 overflow-y-auto"></div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="font-display font-semibold text-sm text-gray-800">Categoria</h3>
+                        <div id="catalogo-filtro-categorias" class="space-y-1.5"></div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="font-display font-semibold text-sm text-gray-800">Nível</h3>
+                        <div id="catalogo-filtro-nivel" class="space-y-1.5"></div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="font-display font-semibold text-sm text-gray-800">Faixa de Preço</h3>
+                        <div class="flex items-center gap-2">
+                            <div class="relative flex-1">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">R$</span>
+                                <input type="number" id="catalogo-preco-min" placeholder="0" min="0"
+                                    oninput="catalogo_de_cursos_aplicarFiltros()"
+                                    class="w-full pl-8 pr-2 py-2 border border-gray-200 rounded-lg text-xs focus:ring-2 focus:ring-marca-500/20 focus:border-marca-500 transition-all outline-none">
+                            </div>
+                            <span class="text-gray-400 text-xs">até</span>
+                            <div class="relative flex-1">
+                                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">R$</span>
+                                <input type="number" id="catalogo-preco-max" placeholder="5000" min="0"
+                                    oninput="catalogo_de_cursos_aplicarFiltros()"
+                                    class="w-full pl-8 pr-2 py-2 border border-gray-200 rounded-lg text-xs focus:ring-2 focus:ring-marca-500/20 focus:border-marca-500 transition-all outline-none">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="font-display font-semibold text-sm text-gray-800">Duração</h3>
+                        <select id="catalogo-filtro-duracao" onchange="catalogo_de_cursos_aplicarFiltros()"
+                            class="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-marca-500/20 focus:border-marca-500 transition-all outline-none bg-white">
+                            <option value="">Qualquer duração</option>
+                            <option value="0-4">Até 4 horas</option>
+                            <option value="4-10">4 a 10 horas</option>
+                            <option value="10-40">10 a 40 horas</option>
+                            <option value="40-999">Mais de 40 horas</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h3 class="font-display font-semibold text-sm text-gray-800">Ordenar por</h3>
+                        <select id="catalogo-ordenacao" onchange="catalogo_de_cursos_aplicarFiltros()"
+                            class="w-full px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-marca-500/20 focus:border-marca-500 transition-all outline-none bg-white">
+                            <option value="relevancia">Mais Relevantes</option>
+                            <option value="mais-vendidos">Mais Vendidos</option>
+                            <option value="menor-preco">Menor Preço</option>
+                            <option value="maior-preco">Maior Preço</option>
+                            <option value="melhor-avaliacao">Melhor Avaliação</option>
+                            <option value="mais-recentes">Mais Recentes</option>
+                        </select>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="flex-1 min-w-0">
+                <div class="bg-white rounded-xl border border-gray-100 shadow-sm p-5 mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h1 class="font-display font-bold text-2xl text-gray-900">Catálogo de Cursos</h1>
+                            <p class="text-gray-500 text-sm mt-0.5">Explore nossos cursos e invista no seu futuro profissional</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span id="catalogo-contador" class="text-sm text-gray-500"></span>
+                            <button onclick="catalogo_de_cursos_toggleView()" id="catalogo-btn-view" class="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors" title="Alternar visualização">
+                                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="catalogo-cursos-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5"></div>
+
+                <div id="catalogo-vazio" class="hidden bg-white rounded-xl border border-gray-100 shadow-sm p-12 text-center">
+                    <svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" stroke-width="1.5"/><path stroke-linecap="round" stroke-width="1.5" d="M21 21l-4.35-4.35"/><path stroke-linecap="round" stroke-width="2" d="M8 11h6"/></svg>
+                    <h3 class="font-display font-semibold text-lg text-gray-700 mb-1">Nenhum curso encontrado</h3>
+                    <p class="text-gray-500 text-sm">Tente ajustar seus filtros ou buscar por outro termo.</p>
+                </div>
+
+                <div id="catalogo-paginacao" class="mt-8 flex items-center justify-center gap-2"></div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var cat = 'catalogo-de-cursos';
+        var cursos = [
+            {id:1, titulo:'Excel Avançado para Análise de Dados', categoria:'Tecnologia', nivel:'Avançado', preco:197.00, avaliacao:4.8, alunos:3250, cargaHoraria:40, professor:'Dr. Carlos Mendes', professorIniciais:'CM', corProfessor:'bg-blue-500', descricao:'Domine as técnicas avançadas de Excel para análise de dados, incluindo tabelas dinâmicas, Power Query, macros e dashboards interativos. Ideal para profissionais que buscam se destacar no mercado.', thumbGrad:'from-blue-500 to-indigo-600', thumbIcone:'#1e3a5f', badge:'Bestseller', badgeCor:'bg-amber-100 text-amber-700'},
+            {id:2, titulo:'Marketing Digital Completo', categoria:'Marketing', nivel:'Intermediário', preco:147.00, avaliacao:4.7, alunos:5820, cargaHoraria:60, professor:'Ana Beatriz Silva', professorIniciais:'AB', corProfessor:'bg-pink-500', descricao:'Aprenda SEO, Google Ads, Facebook Ads, e-mail marketing e copywriting do zero ao avançado. Torne-se um profissional completo de marketing digital.', thumbGrad:'from-pink-500 to-rose-600', thumbIcone:'#2563EB', badge:'Novo', badgeCor:'bg-green-100 text-green-700'},
+            {id:3, titulo:'Programação Web Full Stack', categoria:'Tecnologia', nivel:'Intermediário', preco:297.00, avaliacao:4.9, alunos:4100, cargaHoraria:120, professor:'Prof. Rafael Costa', professorIniciais:'RC', corProfessor:'bg-emerald-500', descricao:'HTML, CSS, JavaScript, React, Node.js e banco de dados. Do front-end ao back-end, construa aplicações web completas e modernas.', thumbGrad:'from-emerald-500 to-teal-600', thumbIcone:'#1e3a5f', badge:'Bestseller', badgeCor:'bg-amber-100 text-amber-700'},
+            {id:4, titulo:'Design Gráfico & UI/UX', categoria:'Design', nivel:'Básico', preco:127.00, avaliacao:4.6, alunos:2900, cargaHoraria:50, professor:'Juliana Paiva', professorIniciais:'JP', corProfessor:'bg-purple-500', descricao:'Photoshop, Illustrator, Figma e princípios de design. Crie interfaces incríveis e identidades visuais que encantam.', thumbGrad:'from-purple-500 to-violet-600', thumbIcone:'#2563EB', badge:'', badgeCor:''},
+            {id:5, titulo:'Gestão de Projetos com PMP', categoria:'Gestão', nivel:'Avançado', preco:247.00, avaliacao:4.5, alunos:1870, cargaHoraria:45, professor:'Marcos Oliveira', professorIniciais:'MO', corProfessor:'bg-orange-500', descricao:'Prepare-se para a certificação PMP. Metodologias ágeis, Scrum, Kanban e gerenciamento de stakeholders.', thumbGrad:'from-orange-500 to-amber-600', thumbIcone:'#1e3a5f', badge:'', badgeCor:''},
+            {id:6, titulo:'Inglês para Negócios', categoria:'Idiomas', nivel:'Intermediário', preco:167.00, avaliacao:4.4, alunos:6200, cargaHoraria:80, professor:'Sarah Thompson', professorIniciais:'ST', corProfessor:'bg-cyan-500', descricao:'Desenvolva fluência em inglês para reuniões, negociações, apresentações e comunicação corporativa internacional.', thumbGrad:'from-cyan-500 to-sky-600', thumbIcone:'#2563EB', badge:'Popular', badgeCor:'bg-blue-100 text-blue-700'},
+            {id:7, titulo:'Finanças Corporativas', categoria:'Negócios', nivel:'Avançado', preco:227.00, avaliacao:4.7, alunos:2100, cargaHoraria:35, professor:'Dr. Paulo Henrique', professorIniciais:'PH', corProfessor:'bg-teal-500', descricao:'Fluxo de caixa, valuation, capital de giro e análise de investimentos. Torne-se um expert em finanças empresariais.', thumbGrad:'from-teal-500 to-emerald-600', thumbIcone:'#1e3a5f', badge:'', badgeCor:''},
+            {id:8, titulo:'Social Media & Conteúdo Digital', categoria:'Marketing', nivel:'Básico', preco:97.00, avaliacao:4.3, alunos:7450, cargaHoraria:30, professor:'Fernanda Lima', professorIniciais:'FL', corProfessor:'bg-rose-500', descricao:'Estratégias de conteúdo para Instagram, TikTok e YouTube. Engajamento, crescimento e monetização de audiência.', thumbGrad:'from-rose-500 to-red-600', thumbIcone:'#2563EB', badge:'Novo', badgeCor:'bg-green-100 text-green-700'},
+            {id:9, titulo:'Python para Data Science', categoria:'Tecnologia', nivel:'Intermediário', preco:187.00, avaliacao:4.8, alunos:3100, cargaHoraria:55, professor:'Dr. Lucas Ferreira', professorIniciais:'LF', corProfessor:'bg-yellow-600', descricao:'Pandas, NumPy, Matplotlib e Scikit-learn. Manipule dados, crie visualizações e construa modelos de machine learning.', thumbGrad:'from-yellow-600 to-orange-500', thumbIcone:'#1e3a5f', badge:'Bestseller', badgeCor:'bg-amber-100 text-amber-700'},
+            {id:10, titulo:'Liderança & Gestão de Equipes', categoria:'Gestão', nivel:'Intermediário', preco:137.00, avaliacao:4.5, alunos:4200, cargaHoraria:25, professor:'Dra. Márcia Santos', professorIniciais:'MS', corProfessor:'bg-indigo-500', descricao:'Desenvolva habilidades de liderança, comunicação, motivação e gestão de conflitos para equipes de alta performance.', thumbGrad:'from-indigo-500 to-blue-600', thumbIcone:'#2563EB', badge:'', badgeCor:''},
+            {id:11, titulo:'Fotografia Profissional', categoria:'Design', nivel:'Básico', preco:89.00, avaliacao:4.2, alunos:3800, cargaHoraria:20, professor:'Ricardo Barros', professorIniciais:'RB', corProfessor:'bg-gray-600', descricao:'Técnicas de composição, iluminação, edição no Lightroom e Photoshop. Transforme suas fotos em obras de arte.', thumbGrad:'from-gray-600 to-slate-700', thumbIcone:'#2563EB', badge:'', badgeCor:''},
+            {id:12, titulo:'Espanhol para Viagens e Negócios', categoria:'Idiomas', nivel:'Básico', preco:119.00, avaliacao:4.3, alunos:2800, cargaHoraria:40, professor:'Prof. María González', professorIniciais:'MG', corProfessor:'bg-red-500', descricao:'Aprenda espanhol focado no dia a dia empresarial e viagens internacionais. Pronúncia, gramática e vocabulário prático.', thumbGrad:'from-red-500 to-orange-600', thumbIcone:'#1e3a5f', badge:'', badgeCor:''},
+            {id:13, titulo:'Copywriting Persuasivo', categoria:'Marketing', nivel:'Avançado', preco:157.00, avaliacao:4.6, alunos:2200, cargaHoraria:15, professor:'Bruno Almeida', professorIniciais:'BA', corProfessor:'bg-violet-500', descricao:'Psicologia da venda, gatilhos mentais, headlines irresistíveis e textos que convertem. Venda mais com palavras.', thumbGrad:'from-violet-500 to-purple-600', thumbIcone:'#2563EB', badge:'Novo', badgeCor:'bg-green-100 text-green-700'},
+            {id:14, titulo:'Direito Empresarial Básico', categoria:'Negócios', nivel:'Básico', preco:179.00, avaliacao:4.4, alunos:1600, cargaHoraria:30, professor:'Drª. Camila Rocha', professorIniciais:'CR', corProfessor:'bg-sky-700', descricao:'Contratos, direitos autorais, LGPD, tributação básica e estruturação jurídica para pequenos e médios negócios.', thumbGrad:'from-sky-700 to-blue-800', thumbIcone:'#1e3a5f', badge:'', badgeCor:''},
+            {id:15, titulo:'React & TypeScript', categoria:'Tecnologia', nivel:'Avançado', preco:217.00, avaliacao:4.9, alunos:2600, cargaHoraria:70, professor:'Diego Nascimento', professorIniciais:'DN', corProfessor:'bg-sky-500', descricao:'React 18, TypeScript, Redux Toolkit, Next.js e testes automatizados. Domine o ecossistema front-end moderno.', thumbGrad:'from-sky-500 to-blue-600', thumbIcone:'#2563EB', badge:'Bestseller', badgeCor:'bg-amber-100 text-amber-700'},
+            {id:16, titulo:'Mindfulness & Bem-Estar', categoria:'Desenvolvimento', nivel:'Básico', preco:59.00, avaliacao:4.9, alunos:9800, cargaHoraria:10, professor:'Dra. Patrícia Luz', professorIniciais:'PL', corProfessor:'bg-green-400', descricao:'Meditação, gestão do estresse, equilíbrio vida-trabalho e saúde mental para profissionais de alta performance.', thumbGrad:'from-green-400 to-emerald-500', thumbIcone:'#1e3a5f', badge:'Popular', badgeCor:'bg-blue-100 text-blue-700'},
+            {id:17, titulo:'Gestão Financeira Pessoal', categoria:'Negócios', nivel:'Básico', preco:79.00, avaliacao:4.5, alunos:8900, cargaHoraria:12, professor:'Prof. André Kiyoshi', professorIniciais:'AK', corProfessor:'bg-lime-600', descricao:'Orçamento familiar, investimentos, aposentadoria, dívidas e liberdade financeira. Controle seu dinheiro de vez.', thumbGrad:'from-lime-600 to-green-600', thumbIcone:'#2563EB', badge:'Popular', badgeCor:'bg-blue-100 text-blue-700'},
+            {id:18, titulo:'Comunicação & Oratória', categoria:'Desenvolvimento', nivel:'Básico', preco:109.00, avaliacao:4.6, alunos:5400, cargaHoraria:18, professor:'Profª. Luciana Dias', professorIniciais:'LD', corProfessor:'bg-fuchsia-500', descricao:'Técnicas de fala em público, storytelling, persuasão e presença de palco. Fale com confiança em qualquer situação.', thumbGrad:'from-fuchsia-500 to-pink-600', thumbIcone:'#1e3a5f', badge:'', badgeCor:''}
+        ];
+
+        var filtros = {categorias:[], niveis:[], precoMin:null, precoMax:null, duracao:'', busca:'', ordenacao:'relevancia'};
+        var paginaAtual = 1;
+        var itensPorPagina = 9;
+        var carrinho = [];
+        var viewGrid = true;
+
+        function catalogo_de_cursos_iniciar() {
+            var cats = [...new Set(cursos.map(c => c.categoria))];
+            var containerCats = document.getElementById('catalogo-filtro-categorias');
+            containerCats.innerHTML = cats.map(function(catNome) {
+                return '<label class="flex items-center gap-2.5 cursor-pointer group"><input type="checkbox" value="'+catNome+'" onchange="catalogo_de_cursos_toggleCategoria(this.value)" class="w-4 h-4 rounded border-gray-300 text-marca-600 focus:ring-marca-500 cursor-pointer"><span class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">'+catNome+'</span></label>';
+            }).join('');
+
+            var containerNivel = document.getElementById('catalogo-filtro-nivel');
+            ['Básico','Intermediário','Avançado'].forEach(function(n) {
+                containerNivel.innerHTML += '<label class="flex items-center gap-2.5 cursor-pointer group"><input type="checkbox" value="'+n+'" onchange="catalogo_de_cursos_toggleNivel(this.value)" class="w-4 h-4 rounded border-gray-300 text-marca-600 focus:ring-marca-500 cursor-pointer"><span class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">'+n+'</span></label>';
+            });
+
+            catalogo_de_cursos_renderizar();
+        }
+
+        function catalogo_de_cursos_toggleCategoria(valor) {
+            var idx = filtros.categorias.indexOf(valor);
+            if (idx > -1) filtros.categorias.splice(idx,1);
+            else filtros.categorias.push(valor);
+            paginaAtual = 1;
+            catalogo_de_cursos_aplicarFiltros();
+        }
+
+        function catalogo_de_cursos_toggleNivel(valor) {
+            var idx = filtros.niveis.indexOf(valor);
+            if (idx > -1) filtros.niveis.splice(idx,1);
+            else filtros.niveis.push(valor);
+            paginaAtual = 1;
+            catalogo_de_cursos_aplicarFiltros();
+        }
+
+        function catalogo_de_cursos_buscar(valor) {
+            filtros.busca = valor.toLowerCase();
+            paginaAtual = 1;
+            catalogo_de_cursos_aplicarFiltros();
+            catalogo_de_cursos_renderSugestoes(valor);
+        }
+
+        function catalogo_de_cursos_abrirSugestoes() {
+            var el = document.getElementById('catalogo-sugestoes');
+            if (el.innerHTML.trim() !== '') { el.classList.remove('hidden'); }
+        }
+
+        function catalogo_de_cursos_fecharSugestoes() {
+            document.getElementById('catalogo-sugestoes').classList.add('hidden');
+        }
+
+        function catalogo_de_cursos_renderSugestoes(busca) {
+            var el = document.getElementById('catalogo-sugestoes');
+            if (!busca || busca.length < 2) { el.classList.add('hidden'); return; }
+            var sugestoes = cursos.filter(function(c) { return c.titulo.toLowerCase().includes(busca.toLowerCase()) || c.categoria.toLowerCase().includes(busca.toLowerCase()); }).slice(0,6);
+            if (sugestoes.length === 0) { el.classList.add('hidden'); return; }
+            el.innerHTML = sugestoes.map(function(c) {
+                return '<button onmousedown="mostrarTela(\'detalhes-do-curso\');catalogo_de_cursos_fecharSugestoes();" class="w-full text-left px-4 py-2.5 hover:bg-gray-50 transition-colors flex items-center gap-3"><div class="w-8 h-8 rounded-md bg-gradient-to-br '+c.thumbGrad+' flex items-center justify-center flex-shrink-0"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><div class="min-w-0"><p class="text-sm text-gray-800 truncate">'+c.titulo+'</p><p class="text-xs text-gray-400">'+c.categoria+' · '+c.nivel+'</p></div></button>';
+            }).join('');
+            el.classList.remove('hidden');
+        }
+
+        function catalogo_de_cursos_limparFiltros() {
+            filtros = {categorias:[], niveis:[], precoMin:null, precoMax:null, duracao:'', busca:'', ordenacao:document.getElementById('catalogo-ordenacao').value};
+            document.querySelectorAll('#catalogo-filtro-categorias input, #catalogo-filtro-nivel input').forEach(function(cb) { cb.checked = false; });
+            document.getElementById('catalogo-preco-min').value = '';
+            document.getElementById('catalogo-preco-max').value = '';
+            document.getElementById('catalogo-filtro-duracao').value = '';
+            document.getElementById('catalogo-busca-input').value = '';
+            paginaAtual = 1;
+            catalogo_de_cursos_aplicarFiltros();
+        }
+
+        function catalogo_de_cursos_aplicarFiltros() {
+            filtros.precoMin = parseFloat(document.getElementById('catalogo-preco-min').value) || null;
+            filtros.precoMax = parseFloat(document.getElementById('catalogo-preco-max').value) || null;
+            filtros.duracao = document.getElementById('catalogo-filtro-duracao').value;
+            filtros.ordenacao = document.getElementById('catalogo-ordenacao').value;
+            paginaAtual = 1;
+            catalogo_de_cursos_renderizar();
+        }
+
+        function catalogo_de_cursos_getFiltrados() {
+            var resultado = cursos.filter(function(c) {
+                if (filtros.categorias.length > 0 && filtros.categorias.indexOf(c.categoria) === -1) return false;
+                if (filtros.niveis.length > 0 && filtros.niveis.indexOf(c.nivel) === -1) return false;
+                if (filtros.precoMin !== null && c.preco < filtros.precoMin) return false;
+                if (filtros.precoMax !== null && c.preco > filtros.precoMax) return false;
+                if (filtros.duracao) {
+                    var parts = filtros.duracao.split('-');
+                    var min = parseInt(parts[0]), max = parseInt(parts[1]);
+                    if (c.cargaHoraria < min || c.cargaHoraria > max) return false;
+                }
+                if (filtros.busca) {
+                    var termo = filtros.busca.toLowerCase();
+                    if (c.titulo.toLowerCase().indexOf(termo) === -1 && c.categoria.toLowerCase().indexOf(termo) === -1 && c.professor.toLowerCase().indexOf(termo) === -1) return false;
+                }
+                return true;
+            });
+
+            var ord = filtros.ordenacao;
+            if (ord === 'menor-preco') resultado.sort(function(a,b){return a.preco-b.preco;});
+            else if (ord === 'maior-preco') resultado.sort(function(a,b){return b.preco-a.preco;});
+            else if (ord === 'melhor-avaliacao') resultado.sort(function(a,b){return b.avaliacao-a.avaliacao;});
+            else if (ord === 'mais-vendidos') resultado.sort(function(a,b){return b.alunos-a.alunos;});
+            else if (ord === 'mais-recentes') resultado.sort(function(a,b){return b.id-a.id;});
+            return resultado;
+        }
+
+        function catalogo_de_cursos_renderizar() {
+            var filtrados = catalogo_de_cursos_getFiltrados();
+            var container = document.getElementById('catalogo-cursos-grid');
+            var vazio = document.getElementById('catalogo-vazio');
+            var contador = document.getElementById('catalogo-contador');
+            var paginacao = document.getElementById('catalogo-paginacao');
+
+            contador.textContent = filtrados.length + ' curso' + (filtrados.length !== 1 ? 's' : '') + ' encontrado' + (filtrados.length !== 1 ? 's' : '');
+
+            if (filtrados.length === 0) {
+                container.innerHTML = '';
+                vazio.classList.remove('hidden');
+                paginacao.innerHTML = '';
+                return;
+            }
+            vazio.classList.add('hidden');
+
+            var inicio = (paginaAtual - 1) * itensPorPagina;
+            var fim = Math.min(inicio + itensPorPagina, filtrados.length);
+            var pagina = filtrados.slice(inicio, fim);
+
+            container.className = viewGrid ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5' : 'grid grid-cols-1 sm:grid-cols-2 gap-4';
+
+            container.innerHTML = pagina.map(function(c) {
+                var estrelas = '';
+                for (var i = 1; i <= 5; i++) {
+                    if (i <= Math.floor(c.avaliacao)) estrelas += '<svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.529c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                    else if (i === Math.ceil(c.avaliacao) && c.avaliacao % 1 >= 0.5) estrelas += '<svg class="w-3.5 h-3.5 text-amber-400" viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs><path fill="url(#half)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.529c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                    else estrelas += '<svg class="w-3.5 h-3.5 text-gray-300 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.529c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>';
+                }
+                var nivelCor = c.nivel === 'Básico' ? 'bg-green-100 text-green-700' : c.nivel === 'Intermediário' ? 'bg-amber-100 text-amber-700' : 'bg-red-100 text-red-700';
+
+                return '<div class="card bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col">'+
+                    '<div class="relative h-44 bg-gradient-to-br '+c.thumbGrad+' flex items-center justify-center flex-shrink-0 cursor-pointer" onclick="mostrarTela(\'detalhes-do-curso\')">'+
+                        '<svg class="w-16 h-16 opacity-30" fill="none" stroke="'+c.thumbIcone+'" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>'+
+                        (c.badge ? '<span class="absolute top-3 left-3 px-2.5 py-0.5 text-xs font-semibold rounded-full '+c.badgeCor+'">'+c.badge+'</span>' : '')+
+                        '<span class="absolute top-3 right-3 px-2 py-0.5 text-xs font-medium rounded-full bg-white/90 text-gray-700">'+c.cargaHoraria+'h</span>'+
+                        '<button onclick="event.stopPropagation();catalogo_de_cursos_toggleFavorito('+c.id+',this)" class="absolute bottom-3 right-3 p-2 rounded-full bg-white/80 hover:bg-white transition-colors" title="Favoritar"><svg class="w-4 h-4 text-gray-400 hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>'+
+                    '</div>'+
+                    '<div class="p-5 flex flex-col flex-1">'+
+                        '<div class="flex items-center gap-2 mb-2">'+
+                            '<span class="text-xs font-medium px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">'+c.categoria+'</span>'+
+                            '<span class="text-xs font-medium px-2 py-0.5 rounded-full '+nivelCor+'">'+c.nivel+'</span>'+
+                        '</div>'+
+                        '<h3 class="font-display font-semibold text-gray-900 mb-2 leading-snug cursor-pointer hover:text-marca-600 transition-colors line-clamp-2" onclick="mostrarTela(\'detalhes-do-curso\')">'+c.titulo+'</h3>'+
+                        '<p class="text-sm text-gray-500 mb-3 line-clamp-2">'+c.descricao+'</p>'+
+                        '<div class="flex items-center gap-2 mb-3">'+
+                            '<div class="w-6 h-6 rounded-full '+c.corProfessor+' flex items-center justify-center flex-shrink-0"><span class="text-white text-[10px] font-bold">'+c.professorIniciais+'</span></div>'+
+                            '<span class="text-xs text-gray-600">'+c.professor+'</span>'+
+                        '</div>'+
+                        '<div class="flex items-center gap-1 mb-3">'+estrelas+'<span class="text-sm font-semibold text-gray-700 ml-1">'+c.avaliacao+'</span><span class="text-xs text-gray-400">('+c.alunos.toLocaleString('pt-BR')+' alunos)</span></div>'+
+                        '<div class="mt-auto flex items-center justify-between gap-3">'+
+                            '<div><span class="font-display font-bold text-xl text-gray-900">'+brl(c.preco)+'</span><span class="text-xs text-gray-400 ml-1 line-through">'+brl(c.preco * 1.5)+'</span></div>'+
+                            '<button onclick="catalogo_de_cursos_adicionarCarrinho('+c.id+',this)" class="btn active:scale-95 bg-marca-600 hover:bg-marca-700 text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-all shadow-sm hover:shadow-md whitespace-nowrap">'+
+                                '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>'+
+                                'Adicionar'+
+                            '</button>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
+            }).join('');
+
+            var totalPag = Math.ceil(filtrados.length / itensPorPagina);
+            if (totalPag <= 1) { paginacao.innerHTML = ''; return; }
+            var pagHtml = '<button onclick="catalogo_de_cursos_irPagina('+(paginaAtual-1)+')" '+(paginaAtual === 1 ? 'disabled' : '')+' class="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors '+(paginaAtual === 1 ? 'opacity-40 cursor-not-allowed' : '')+'"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>';
+            for (var p = 1; p <= totalPag; p++) {
+                pagHtml += '<button onclick="catalogo_de_cursos_irPagina('+p+')" class="w-9 h-9 rounded-lg text-sm font-medium transition-colors '+(p === paginaAtual ? 'bg-marca-600 text-white shadow-md' : 'border border-gray-200 hover:bg-gray-50 text-gray-600')+'">'+p+'</button>';
+            }
+            pagHtml += '<button onclick="catalogo_de_cursos_irPagina('+(paginaAtual+1)+')" '+(paginaAtual === totalPag ? 'disabled' : '')+' class="p-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors '+(paginaAtual === totalPag ? 'opacity-40 cursor-not-allowed' : '')+'"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>';
+            paginacao.innerHTML = pagHtml;
+        }
+
+        function catalogo_de_cursos_irPagina(p) {
+            var totalPag = Math.ceil(catalogo_de_cursos_getFiltrados().length / itensPorPagina);
+            if (p < 1 || p > totalPag) return;
+            paginaAtual = p;
+            catalogo_de_cursos_renderizar();
+            window.scrollTo({top: document.getElementById(cat).offsetTop - 20, behavior:'smooth'});
+        }
+
+        function catalogo_de_cursos_adicionarCarrinho(cursoId, btnEl) {
+            var curso = cursos.find(function(c) { return c.id === cursoId; });
+            if (!curso) return;
+            carrinho.push({id:curso.id, titulo:curso.titulo, preco:curso.preco});
+            if (btnEl) {
+                btnEl.innerHTML = '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Adicionado!';
+                btnEl.classList.remove('bg-marca-600','hover:bg-marca-700');
+                btnEl.classList.add('bg-green-600','hover:bg-green-700');
+                setTimeout(function() {
+                    btnEl.innerHTML = '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z"/></svg>Adicionar';
+                    btnEl.classList.remove('bg-green-600','hover:bg-green-700');
+                    btnEl.classList.add('bg-marca-600','hover:bg-marca-700');
+                }, 1500);
+            }
+            toast('"'+curso.titulo+'" adicionado ao carrinho!','ok');
+        }
+
+        function catalogo_de_cursos_toggleFavorito(cursoId, btnEl) {
+            var svg = btnEl.querySelector('svg');
+            if (svg.getAttribute('fill') === 'currentColor') {
+                svg.setAttribute('fill', 'none');
+                svg.classList.remove('text-red-500');
+                svg.classList.add('text-gray-400');
+                toast('Removido dos favoritos','info');
+            } else {
+                svg.setAttribute('fill', 'currentColor');
+                svg.classList.remove('text-gray-400');
+                svg.classList.add('text-red-500');
+                toast('Adicionado aos favoritos!','ok');
+            }
+        }
+
+        function catalogo_de_cursos_toggleView() {
+            viewGrid = !viewGrid;
+            catalogo_de_cursos_renderizar();
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('#catalogo-busca-input') && !e.target.closest('#catalogo-sugestoes')) {
+                document.getElementById('catalogo-sugestoes').classList.add('hidden');
+            }
+        });
+
+        if (typeof mostrarTela === 'function') {
+            var orig = mostrarTela;
+            mostrarTela = function(id) {
+                if (id === cat) catalogo_de_cursos_iniciar();
+                orig(id);
+            };
+        }
+
+        setTimeout(catalogo_de_cursos_iniciar, 0);
+    })();
+    </script>
+</section>
+
     <!-- TELAS -->
             </main>
         </div>
